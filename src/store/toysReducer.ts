@@ -9,12 +9,15 @@ export const toySlice = createSlice({
     },
     reducers: {
         add: (state: any, action) => {
-            state.toys = [...state.toys, action.payload]; //gets payload and update the reference to new array
+            state.toys = [...state.toys, action.payload];
         },
+        showToy: (state: any, action) => {
+            state.toy = { ...action.payload };
+        }
 
     }
 }); //configure state with actions
 
 
-export const { add } = toySlice.actions; // exports actions for components
+export const { add, showToy } = toySlice.actions; // exports actions for components
 export const toysReducer = toySlice.reducer; // exports reducer for store configuration

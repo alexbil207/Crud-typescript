@@ -6,6 +6,7 @@ const StoreWrapper = styled.section`
     height: calc(100vh - 77px);
     width:100%;
     display: flex;
+    gap: 10px;
 `
 
 export const ToyStore = () => {
