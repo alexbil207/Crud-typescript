@@ -14,9 +14,6 @@ export const useForm = (initialState: any) => {
                 case 'number':
                     value = +ev.target.value;
                     break;
-                case 'checkbox':
-                    value = ev.target.checked;
-                    break;
                 default:
                     value = ev.target.value;
             }

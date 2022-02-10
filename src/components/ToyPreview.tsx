@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { ToysProps } from "../interfaces/interface";
-import { showToy } from '../store/toysReducer';
-
+import { ToyPreviewProps } from "../interfaces/interface";
+import { storageService } from "../sevices/srorage.service";
+import { showToy, removeToy } from '../store/toysReducer';
 const ToyWrapper = styled.figure`
 display: flex;
 align-items: center;
@@ -36,21 +36,27 @@ const RemoveBtn = styled.button`
     }
 `
 
-interface ToyPreviewProps {
-    toy: ToysProps
-}
+
 
 
 export const ToyPreview = ({ toy }: ToyPreviewProps) => {
     const dispatch = useDispatch();
+
+
+    const removeToyFromList = (ev: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        ev.preventDefault();
+        dispatch(removeToy(toy.id))
+        storageService.removeToyFromStorage(toy.id);
+
+    }
     return (
         <ToyWrapper onClick={() => { dispatch(showToy(toy)) }}>
-            <img src={`https://robohash.org/${toy.name}`} alt="" />
+            <img src={toy.img} alt="" />
             <DetailsWrapper>
                 <h4>{`${toy.name.substring(0, 20)}...`}</h4>
                 <h5>{`${toy.description.substring(1, 100)}...`}</h5>
             </DetailsWrapper>
-            <RemoveBtn>
+            <RemoveBtn onClick={(ev) => removeToyFromList(ev)}>
                 Remove
             </RemoveBtn>
         </ToyWrapper>

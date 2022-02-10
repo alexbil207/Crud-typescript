@@ -36,9 +36,11 @@ const _getRandomIntInclusive = (min: number, max: number): number => {
     return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
 }
 
+
 const _createToy = () => {
     return {
         id: makeId(),
+        img: `https://robohash.org/${makeId()}`,
         name: _makeLorem(),
         description: _makeLorem(200),
         price: _getRandomIntInclusive(0, 1000),

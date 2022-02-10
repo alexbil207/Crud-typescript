@@ -3,9 +3,10 @@ import { ToyDetails } from "../components/ToyDetails";
 import { ToyList } from "../components/ToyList";
 
 const StoreWrapper = styled.section`
-    height: calc(100vh - 77px);
+    height: calc(100vh - 100px);
     width:100%;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 10px;
 `
 
